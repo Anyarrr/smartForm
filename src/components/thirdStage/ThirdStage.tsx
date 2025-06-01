@@ -1,12 +1,9 @@
 import { Grid, Typography } from "@mui/material";
 import Looks3Icon from "@mui/icons-material/Looks3";
 import { BankingInformationForm } from "./BankingInformationForm";
-import type { ThridStageProps } from "../firstStage/FirstStage.types";
+import type { CardI } from "../firstStage/FirstStage.types";
 
-export const ThirdStage = ({
-  thridLoading,
-  setThridLoading,
-}: ThridStageProps) => {
+export const ThirdStage = ({cardLoading, setCardLoading} :CardI) => {
   return (
     <Grid>
       <Typography
@@ -20,10 +17,7 @@ export const ThirdStage = ({
         <Looks3Icon />
         Третий этап
       </Typography>
-      <BankingInformationForm
-        thridLoading={thridLoading}
-        setThridLoading={setThridLoading}
-      />
+      <BankingInformationForm cardLoading={cardLoading} setCardLoading={setCardLoading}/>
     </Grid>
   );
 };

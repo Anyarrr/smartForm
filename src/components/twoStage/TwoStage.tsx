@@ -1,10 +1,10 @@
 import { Grid, Typography } from "@mui/material";
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
-import type { FirstStageProps } from "../firstStage/FirstStage.types";
 import { PersonalDetails } from "./PersonalDetails";
+import type { ThridStageProps } from "../firstStage/FirstStage.types";
 
 
-export const TwoStage = ({loading, setLoading}: FirstStageProps) => {
+export const TwoStage = ({thridLoading, setThridLoading}: ThridStageProps) => {
   return (
     <Grid>
       <Typography
@@ -18,7 +18,7 @@ export const TwoStage = ({loading, setLoading}: FirstStageProps) => {
         <LooksTwoIcon />
         Второй этап
       </Typography>
-      <PersonalDetails loading={loading} setLoading={setLoading}/>
+      <PersonalDetails thridLoading={thridLoading} setThridLoading={setThridLoading}/>
     </Grid>
   );
 };

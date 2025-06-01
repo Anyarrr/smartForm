@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
 import type { FirstStageProps } from "./FirstStage.types";
+import { useAppDispatch } from "../../app/hook";
+import { addPhone } from "../../features/phoneSlice";
 
 const validationSchema = Yup.object({
   phone: Yup.string()
@@ -18,7 +20,7 @@ const mockDataPhone = (phone: string): Promise<boolean> =>
   );
 
 export const PhoneForm = ({loading, setLoading}: FirstStageProps) => {
-//   const [serverError, setServerError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
   const [loadingResult, setLoadingResult] = useState(false);
   const formik = useFormik({
     initialValues: {
@@ -26,15 +28,15 @@ export const PhoneForm = ({loading, setLoading}: FirstStageProps) => {
     },
     validationSchema,
     onSubmit: async (values) => {
-    //   setServerError(null);
       setLoadingResult(true);
       setLoading(true);
       const isValid = await mockDataPhone(values.phone);
-      // setLoadingResult(false);
 
       if (isValid) {
-        alert("Номер валиден! Можно переходить к следующему шагу.");
+        // alert("Номер валиден! Можно переходить к следующему шагу.");
         // Здесь можно вызвать Redux action для сохранения номера и перехода к следующему шагу
+        dispatch(addPhone(values.phone));
+        console.log(values.phone)
       }
     },
   });

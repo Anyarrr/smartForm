@@ -7,3 +7,8 @@ export interface ThridStageProps {
     thridLoading: boolean
     setThridLoading: (thridLoading: boolean) => void
 }
+
+export interface CardI {
+    cardLoading: boolean
+    setCardLoading: (cardLoading: boolean) => void;
+}

@@ -1,7 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
+import phoneSlice from "../features/phoneSlice";
+import dataSlice from "../features/dataSlice";
+import cvvSlice from "../features/cvvSlice";
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        phone: phoneSlice,
+        data: dataSlice,
+        cvv: cvvSlice
+    },
 });
 
 export type AppDispatch = typeof store.dispatch;

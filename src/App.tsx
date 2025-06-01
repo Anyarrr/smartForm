@@ -3,10 +3,12 @@ import { FirstStage } from "./components/firstStage/FirstStage";
 import { useState } from "react";
 import { TwoStage } from "./components/twoStage/TwoStage";
 import { ThirdStage } from "./components/thirdStage/ThirdStage";
+import { Card } from "./components/Card";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [thridLoading, setThridLoading] = useState(false);
+  const [cardLoading, setCardLoading] = useState(false);
   return (
     <Grid>
       <Paper sx={{ width: "400px" }}>
@@ -22,8 +24,9 @@ function App() {
           Форма заказа
         </Typography>
         <FirstStage loading={loading} setLoading={setLoading} />
-        {loading? <TwoStage loading={loading} setLoading={setLoading} />: null}
-        {thridLoading? <ThirdStage thridLoading={thridLoading} setThridLoading={setThridLoading} />: null}
+        {loading? <TwoStage thridLoading={thridLoading} setThridLoading={setThridLoading}/>: null}
+        {thridLoading? <ThirdStage cardLoading={cardLoading} setCardLoading={setCardLoading}/>: null}
+        {cardLoading? <Card/> : null}
       </Paper>
     </Grid>
   );

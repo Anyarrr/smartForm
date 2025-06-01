@@ -1,8 +1,10 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
-import type { FirstStageProps } from "../firstStage/FirstStage.types";
+import type { ThridStageProps } from "../firstStage/FirstStage.types";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useAppDispatch } from "../../app/hook";
+import { addData } from "../../features/dataSlice";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Поле обязательно для заполнения"),
@@ -15,7 +17,8 @@ const validationSchema = Yup.object({
   comment: Yup.string().optional(),
 });
 
-export const PersonalDetails = ({ loading, setLoading }: FirstStageProps) => {
+export const PersonalDetails = ({thridLoading, setThridLoading}: ThridStageProps) => {
+  const dispatch = useAppDispatch();
   const [loadingResult, setLoadingResult] = useState(false);
 
   const formik = useFormik({
@@ -30,9 +33,11 @@ export const PersonalDetails = ({ loading, setLoading }: FirstStageProps) => {
       comment: "",
     },
     validationSchema,
-    onSubmit: () => {
+    onSubmit: (values) => {
       setLoadingResult(true);
-      setLoading(true);
+      setThridLoading(true);  
+      dispatch(addData(values));
+      console.log(values)
     },
   });
 
